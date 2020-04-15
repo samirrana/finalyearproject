@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/LoginFragment">
+
+    <fragment
+        android:id="@+id/LoginFragment"
+        android:name="com.example.assignmentapplication.LogOutActivity"
+        android:label="loginpage"
+        tools:layout="@layout/loginpage" >
+        <action
+            android:id="@+id/action_logOutActivity_to_assignmentListFragment"
+            app:destination="@id/assignmentListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/assignmentListFragment"
+        android:name="com.example.assignmentapplication.AssignmentListFragment"
+        android:label="fragment_assignment_list"
+        tools:layout="@layout/list_item_assignment" >
+        <action
+            android:id="@+id/action_assignmentListFragment_to_assignmentFragment"
+            app:destination="@id/assignmentFragment" />
+        <action
+            android:id="@+id/action_assignmentListFragment_to_assignmentFragment2"
+            app:destination="@id/assignmentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/assignmentFragment"
+        android:name="com.example.assignmentapplication.AssignmentFragment"
+        android:label="fragment_assignment"
+        tools:layout="@layout/fragment_assignment" >
+        <action
+            android:id="@+id/action_assignmentFragment_to_datePickerFragment"
+            app:destination="@id/datePickerFragment" />
+        <action
+            android:id="@+id/action_assignmentFragment_to_timePickerFragment"
+            app:destination="@id/timePickerFragment" />
+        <action
+            android:id="@+id/action_assignmentFragment_to_assignmentListFragment"
+            app:destination="@id/assignmentListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/datePickerFragment"
+        android:name="com.example.assignmentapplication.DatePickerFragment"
+        android:label="dialog_date"
+        tools:layout="@layout/dialog_date" >
+        <action
+            android:id="@+id/action_datePickerFragment_to_assignmentFragment"
+            app:destination="@id/assignmentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/timePickerFragment"
+        android:name="com.example.assignmentapplication.TimePickerFragment"
+        android:label="dialog_time"
+        tools:layout="@layout/dialog_time" >
+        <action
+            android:id="@+id/action_timePickerFragment_to_assignmentFragment"
+            app:destination="@id/assignmentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/subFragment"
+        android:name="com.example.assignmentapplication.SubFragment"
+        android:label="fragment_group"
+        tools:layout="@layout/fragment_group" >
+        <action
+            android:id="@+id/action_subFragment_to_assignmentListFragment"
+            app:destination="@id/assignmentListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/NavigationDrawer"
+        android:name="com.example.assignmentapplication.AssignmentListActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" >
+        <action
+            android:id="@+id/action_assignmentListActivity_to_settingsActivity"
+            app:destination="@id/SettingsFragment" />
+        <action
+            android:id="@+id/action_assignmentListActivity_to_logOutActivity"
+            app:destination="@id/LoginFragment" />
+        <action
+            android:id="@+id/action_assignmentListActivity_to_subFragment"
+            app:destination="@id/subFragment" />
+        <action
+            android:id="@+id/action_assignmentListActivity_to_assignmentListFragment"
+            app:destination="@id/assignmentListFragment" />
+        <action
+            android:id="@+id/action_assignmentListActivity_to_assignmentFragment"
+            app:destination="@id/assignmentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/SettingsFragment"
+        android:name="com.example.assignmentapplication.SettingsActivity"
+        android:label="preferencepage"
+        tools:layout="@layout/preferencepage" >
+        <action
+            android:id="@+id/action_settingsActivity_to_assignmentListFragment"
+            app:destination="@id/assignmentListFragment" />
+    </fragment>
+</navigation>

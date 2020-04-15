@@ -1,0 +1,172 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    android:background="?attr/backgroundcolor">
+
+
+    <TextView
+        android:id="@+id/frag_create_booking_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Create Assignment"
+        android:textColor="@color/colorPrimary"
+        android:textSize="36sp"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/frag_create_booking_subhead"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/frag_create_booking_header"
+        android:text="Fill in the necessary details below."
+        android:textColor="?attr/textcolor"
+
+        android:textSize="18sp"
+        style="?android:bottomDark"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        />
+
+
+
+
+
+    <TextView
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/assignment_title_label"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginTop="20dp"
+        />
+
+
+
+    <EditText
+        android:id="@+id/assignment_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/assignment_title_hint"
+        android:background="@color/cardview_light_background"/>
+
+    <TextView
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/assignment_details_label"
+        android:textColor="@color/colorPrimary"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/assignment_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/at_sign"/>
+
+        <Button
+            android:id="@+id/assignment_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"/>
+
+    </LinearLayout>
+    <TextView
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/assignment_subject_label"
+        android:textColor="@color/colorPrimary"/>
+
+
+    <EditText
+        android:id="@+id/assignment_subject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+        android:hint="Enter the name of subject"
+        android:background="@color/cardview_light_background"/>
+
+
+
+    <TextView
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/assignment_priority"
+        android:textColor="@color/colorPrimary"
+        />
+
+    <CheckBox
+        android:id="@+id/assignment_solved"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:text="@string/assignment_high"
+        android:background="@color/cardview_light_background"
+
+
+        />
+
+
+
+
+
+
+
+
+    <TextView
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/assignment_action_label"
+        android:textColor="@color/colorPrimary"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true">
+
+
+        <Button
+            android:id="@+id/delete_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/assignment_delete" />
+
+        <Button
+            android:id="@+id/add_btn"
+            android:layout_width="228dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="4dp"
+            android:text="@string/assignment_add" />
+    </RelativeLayout>
+
+
+
+
+
+</LinearLayout>
+</ScrollView>
