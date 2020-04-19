@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Sunway Student Planner</string>
+    <string name="app_name">Sunway Study Planner</string>
     <string name="assignment_title_hint">Enter a title for the assignment.</string>
     <string name="assignment_title_label">Title</string>
     <string name="assignment_details_label">Due Date</string>
@@ -51,8 +51,6 @@
     <string name="assign_subj">Subject</string>
 
 
-
-
     <string name="sign_in">Sign in</string>
     <string name="assign_app">Assignment Application</string>
 
@@ -98,8 +96,6 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-
-
 
 
     <string-array name="themes">

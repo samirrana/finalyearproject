@@ -27,6 +27,7 @@ public class TimePickerFragment extends DialogFragment {
             "com.example.android.assignmentapplication.time";
 
     private TimePicker mTimePicker;
+    private TimePicker mReminderPicker;
 
 
 

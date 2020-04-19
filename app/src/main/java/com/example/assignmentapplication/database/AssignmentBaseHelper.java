@@ -24,7 +24,8 @@ public class AssignmentBaseHelper extends SQLiteOpenHelper {
                 AssignmentTable.Cols.DATE + ", " +
                 AssignmentTable.Cols.SOLVED +", " +
                 AssignmentTable.Cols.SUBJECT + ", " +
-                AssignmentTable.Cols.PRIORITY +
+                AssignmentTable.Cols.REMINDER +
+
 
 
 

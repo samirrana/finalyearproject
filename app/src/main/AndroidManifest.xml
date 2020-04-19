@@ -2,18 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.assignmentapplication">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".FullScreenImageActivity"></activity>
         <activity
             android:name=".SettingsActivity"
             android:label="Settings"
             android:parentActivityName=".AssignmentListActivity">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".AssignmentListActivity" />
@@ -21,13 +25,11 @@
         <activity
             android:name=".AssignmentListActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AssignmentPagerActivity"
-            android:windowSoftInputMode="stateHidden"
-            android:parentActivityName=".AssignmentListActivity" />
+            android:parentActivityName=".AssignmentListActivity"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".LogOutActivity"
             android:windowSoftInputMode="stateHidden">
@@ -37,14 +39,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SubActivity"
+            android:parentActivityName=".AssignmentListActivity" />
+        <activity
+            android:name=".MainMenuActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".SubActivity"
-            android:parentActivityName=".AssignmentListActivity"></activity>
-
-        <activity android:name=".MainMenuActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-           ></activity>
-
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.assignmentapplication.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/files" />
+        </provider>
     </application>
 
 </manifest>

@@ -9,6 +9,7 @@ import com.example.assignmentapplication.database.AssignmentBaseHelper;
 import com.example.assignmentapplication.database.AssignmentCursorWrapper;
 import com.example.assignmentapplication.database.AssignmentDbSchema;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -34,6 +35,8 @@ public class AssignmentLab {
 
 
     }
+
+
 
     public void deleteAssignment(Assignments assignments)
     {
@@ -90,6 +93,12 @@ public class AssignmentLab {
 
     }
 
+
+    public File getPhotoFile(Assignments assignment) {
+        File filesDir = mContext.getFilesDir();
+        return new File(filesDir, assignment.getPhotoFilename());
+    }
+
     public void updateAssignment(Assignments assignment) {
         String uuidString = assignment.getId().toString();
         ContentValues values = getContentValues(assignment);
@@ -120,7 +129,7 @@ public class AssignmentLab {
         values.put(AssignmentDbSchema.AssignmentTable.Cols.DATE, assignment.getDate().getTime());
         values.put(AssignmentDbSchema.AssignmentTable.Cols.SOLVED, assignment.isSolved() ? 1 : 0);
         values.put(AssignmentDbSchema.AssignmentTable.Cols.SUBJECT, assignment.getSubject());
-        values.put(AssignmentDbSchema.AssignmentTable.Cols.PRIORITY, assignment.getPrior());
+        values.put(AssignmentDbSchema.AssignmentTable.Cols.REMINDER, assignment.getReminderDate().getTime());
 
 
         return values;

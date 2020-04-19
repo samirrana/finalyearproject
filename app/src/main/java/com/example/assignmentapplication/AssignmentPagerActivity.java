@@ -15,7 +15,7 @@ import java.util.UUID;
 
 public class AssignmentPagerActivity extends AppCompatActivity  {
     private static final String EXTRA_ASSIGNMNENT_ID =
-            "com.example.android.tvshowapplication.assignment_id";
+            "com.example.assignmentapplication.assignment_id";
 
     private ViewPager mViewPager;
     private List<Assignments> mAssignments;

@@ -10,8 +10,7 @@ public class AssignmentDbSchema {
             public static final String DATE = "date";
             public static final String SOLVED = "solved";
             public static final String SUBJECT = "subject";
-            public static final String PRIORITY = "priority";
-
+            public static final String REMINDER = "reminder";
 
 
 

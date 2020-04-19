@@ -12,6 +12,7 @@ public class Assignments {
     private String mSubject;
     private boolean mPriority;
     private String mPrior;
+    private Date mReminderDate;
 
 
 
@@ -23,6 +24,7 @@ public class Assignments {
     public Assignments(UUID id) {
         mId = id;
         mDate = new Date();
+        mReminderDate = new Date();
 
     }
 
@@ -85,6 +87,17 @@ public class Assignments {
 
     public void setPrior (String radio) {mPrior = radio;}
 
+    public String getPhotoFilename() {
+        return "IMG_" + getId().toString() + ".jpg";
+    }
+
+    public Date getReminderDate() {
+        return mReminderDate;
+    }
+
+    public void setReminderDate(Date reminder) {
+        mReminderDate = reminder;
+    }
 
 
 }
