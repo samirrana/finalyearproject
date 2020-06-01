@@ -3,17 +3,19 @@ package com.example.assignmentapplication;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.view.inputmethod.InputMethodManager;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 import java.util.UUID;
 
-public class AssignmentPagerActivity extends AppCompatActivity  {
+import static com.example.assignmentapplication.AssignmentDetailFragment.isIsEdit;
+import static com.example.assignmentapplication.AssignmentDetailFragment.setIsEdit;
+
+public class AssignmentPagerActivity extends AppCompatActivity {
     private static final String EXTRA_ASSIGNMNENT_ID =
             "com.example.assignmentapplication.assignment_id";
 
@@ -27,9 +29,6 @@ public class AssignmentPagerActivity extends AppCompatActivity  {
         return intent;
     }
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -37,16 +36,19 @@ public class AssignmentPagerActivity extends AppCompatActivity  {
         sharedPref = new SharedPref(this);
 
 
-        if(sharedPref.loadNightModeState()){
+        if (sharedPref.loadNightModeState()) {
             setTheme(R.style.darktheme);
 
         } else setTheme(R.style.AppTheme);
 
+        isIsEdit();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assignment_pager);
 
-        UUID assignmentId = (UUID) getIntent()
+
+
+        final UUID assignmentId = (UUID) getIntent()
                 .getSerializableExtra(EXTRA_ASSIGNMNENT_ID);
 
         mViewPager = (ViewPager) findViewById(R.id.assignment_view_pager);
@@ -57,8 +59,18 @@ public class AssignmentPagerActivity extends AppCompatActivity  {
 
             @Override
             public Fragment getItem(int position) {
-                Assignments show = mAssignments.get(position);
-                return AssignmentFragment.newInstance(show.getId());
+                Assignments assignment = mAssignments.get(position);
+                if (assignment.getTitle() == null) {
+                    return AssignmentFragment.newInstance(assignment.getId());
+
+                } else if (isIsEdit()) {
+                    setIsEdit(false);
+                    return AssignmentFragment.newInstance(assignment.getId());
+
+                }
+                else {
+                    return AssignmentDetailFragment.newInstance(assignment.getId());
+                }
             }
 
             @Override
@@ -66,6 +78,7 @@ public class AssignmentPagerActivity extends AppCompatActivity  {
                 return mAssignments.size();
             }
         });
+
 
         for (int i = 0; i < mAssignments.size(); i++) {
             if (mAssignments.get(i).getId().equals(assignmentId)) {

@@ -37,12 +37,10 @@ public class AssignmentLab {
     }
 
 
-
-    public void deleteAssignment(Assignments assignments)
-    {
+    public void deleteAssignment(Assignments assignments) {
         String uuidString = assignments.getId().toString();
 
-        mDatabase.delete(AssignmentDbSchema.AssignmentTable.NAME, AssignmentDbSchema.AssignmentTable.Cols.UUID + " = ?", new String[] {uuidString});
+        mDatabase.delete(AssignmentDbSchema.AssignmentTable.NAME, AssignmentDbSchema.AssignmentTable.Cols.UUID + " = ?", new String[]{uuidString});
     }
 
     public void addAssignments(Assignments c) {
@@ -75,7 +73,7 @@ public class AssignmentLab {
     public Assignments getAssignment(UUID id) {
         AssignmentCursorWrapper cursor = queryAssignments(
                 AssignmentDbSchema.AssignmentTable.Cols.UUID + " = ?",
-                new String[] { id.toString() }
+                new String[]{id.toString()}
         );
 
         try {
@@ -90,7 +88,6 @@ public class AssignmentLab {
         }
 
 
-
     }
 
 
@@ -99,13 +96,18 @@ public class AssignmentLab {
         return new File(filesDir, assignment.getPhotoFilename());
     }
 
+    public File getPhotoFilez(Assignments assignment) {
+        File filesdx = mContext.getFilesDir();
+        return new File(filesdx, assignment.getPhotoFiled());
+    }
+
     public void updateAssignment(Assignments assignment) {
         String uuidString = assignment.getId().toString();
         ContentValues values = getContentValues(assignment);
 
         mDatabase.update(AssignmentDbSchema.AssignmentTable.NAME, values,
                 AssignmentDbSchema.AssignmentTable.Cols.UUID + " = ?",
-                new String[] { uuidString });
+                new String[]{uuidString});
     }
 
     private AssignmentCursorWrapper queryAssignments(String whereClause, String[] whereArgs) {
@@ -130,7 +132,9 @@ public class AssignmentLab {
         values.put(AssignmentDbSchema.AssignmentTable.Cols.SOLVED, assignment.isSolved() ? 1 : 0);
         values.put(AssignmentDbSchema.AssignmentTable.Cols.SUBJECT, assignment.getSubject());
         values.put(AssignmentDbSchema.AssignmentTable.Cols.REMINDER, assignment.getReminderDate().getTime());
-
+        values.put(AssignmentDbSchema.AssignmentTable.Cols.TYPE, assignment.getType());
+        values.put(AssignmentDbSchema.AssignmentTable.Cols.SUBTASK, assignment.getSubTask());
+        values.put(AssignmentDbSchema.AssignmentTable.Cols.SUBDATE, assignment.getSubDate());
 
         return values;
     }

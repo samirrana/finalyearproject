@@ -7,7 +7,7 @@
         android:id="@+id/new_show"
         android:icon="@drawable/ic_menu_add"
         android:title="@string/new_assignment"
-        app:showAsAction="ifRoom|withText"/>
+        app:showAsAction="ifRoom|withText" />
 
 
-    </menu>
+</menu>

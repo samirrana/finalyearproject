@@ -1,25 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/backgroundcolor"
-    >
+    android:background="?attr/backgroundcolor">
 
+
+    <TextView
+        android:id="@+id/assignment_date"
+        android:layout_width="257dp"
+        android:layout_height="21dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="4dp"
+        android:text="Show Date"
+        android:textColor="?attr/tintcolor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.422"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/assignment_title" />
 
     <TextView
         android:id="@+id/assignment_title"
         android:layout_width="253dp"
         android:layout_height="27dp"
-        android:layout_marginTop="8dp"
         android:text="Assignment Title"
         android:textColor="?attr/tintcolor"
-        app:layout_constraintBottom_toTopOf="@+id/assignment_date"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="15dp"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.373"
-        app:layout_constraintLeft_toLeftOf="@id/assignment_name"
+        app:layout_constraintHorizontal_bias="0.348"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
@@ -28,48 +40,24 @@
         android:id="@+id/assignment_name"
         android:layout_width="wrap_content"
         android:layout_height="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:text="Name:"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/assignment_date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.037"
+        app:layout_constraintHorizontal_bias="0.024"
         app:layout_constraintLeft_toRightOf="@id/assignment_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.897"
+        app:layout_constraintVertical_bias="0.146"
         app:layout_constraintVertical_chainStyle="packed" />
-
-    <TextView
-        android:id="@+id/assignment_date"
-        android:layout_width="322dp"
-        android:layout_height="24dp"
-        android:text="Show Date"
-        android:textColor="?attr/tintcolor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.674"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/assignment_title" />
-
-
-    <TextView
-        android:id="@+id/assignment_due"
-        android:layout_width="wrap_content"
-        android:layout_height="24dp"
-        android:text="Due on:"
-        android:textColor="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.037"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/assignment_title"
-        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/assignment_subject"
         android:layout_width="245dp"
         android:layout_height="24dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
         android:text="Subject"
         android:textColor="?attr/tintcolor"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -84,30 +72,112 @@
         android:layout_width="wrap_content"
         android:layout_height="24dp"
         android:text="Subject:"
+        android:layout_marginTop="8dp"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.034"
+        app:layout_constraintHorizontal_bias="0.019"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/assignment_date"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/assignment_solved"
-        android:layout_width="38dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="28dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="58dp"
+        android:layout_height="59dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/ic_error" />
+        app:layout_constraintVertical_bias="0.3" />
+
+    <TextView
+        android:id="@+id/assignment_reminder"
+        android:layout_width="300dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="40dp"
+        android:text="Date"
+        android:textColor="?attr/tintcolor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.272"
+        app:layout_constraintStart_toEndOf="@+id/reminder"
+        app:layout_constraintTop_toBottomOf="@+id/assignment_date"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/reminder"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:text="Remind"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.022"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/assignment_subject"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/assignment_type"
+        android:layout_width="300dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+
+        android:layout_marginBottom="4dp"
+        android:text="Type"
+        android:textColor="?attr/tintcolor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reminder_date"></TextView>
+
+    <TextView
+        android:id="@+id/type"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:text="Type:"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.023"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reminder"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/assignment_due"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:text="Due on:"
+        android:layout_marginTop="3dp"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.021"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/assignment_title"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="160dp"
+        android:background="?android:attr/listDivider"
+        android:outlineAmbientShadowColor="@color/colorPrimary"
+        android:outlineSpotShadowColor="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 
 
-
-
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

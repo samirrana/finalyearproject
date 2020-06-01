@@ -11,9 +11,9 @@ public class AssignmentDbSchema {
             public static final String SOLVED = "solved";
             public static final String SUBJECT = "subject";
             public static final String REMINDER = "reminder";
-
-
-
+            public static final String TYPE = "type";
+            public static final String SUBTASK = "subtask";
+            public static final String SUBDATE = "subdate";
 
 
         }

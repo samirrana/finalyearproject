@@ -1,10 +1,10 @@
 package com.example.assignmentapplication;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatDelegate;
+import androidx.appcompat.app.AppCompatDelegate;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
@@ -17,16 +17,15 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         mSharedPref = new SharedPref(this);
-        if(mSharedPref.loadNightModeState()==true) {
+        if (mSharedPref.loadNightModeState() == true) {
             setTheme(R.style.darktheme);
 
-        }
-        else setTheme(R.style.AppTheme);
+        } else setTheme(R.style.AppTheme);
 
         super.onCreate(savedInstanceState);
-       setContentView(R.layout.preferencepage);
-        myswitch=(Switch)findViewById(R.id.myswitch);
-        if (mSharedPref.loadNightModeState()==true) {
+        setContentView(R.layout.preferencepage);
+        myswitch = (Switch) findViewById(R.id.myswitch);
+        if (mSharedPref.loadNightModeState() == true) {
             myswitch.setChecked(true);
         }
 
@@ -36,8 +35,7 @@ public class SettingsActivity extends AppCompatActivity {
                 if (isChecked) {
                     mSharedPref.setNightModeState(true);
                     restartApp();
-                }
-                else {
+                } else {
                     mSharedPref.setNightModeState(false);
                     restartApp();
                 }

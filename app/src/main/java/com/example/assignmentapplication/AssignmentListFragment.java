@@ -2,11 +2,11 @@ package com.example.assignmentapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,14 +29,11 @@ public class AssignmentListFragment extends Fragment {
     private static final String SAVED_SUBTITLE_VISIBLE = "subtitle";
 
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
     }
-
 
 
     public static Fragment newInstance() {
@@ -50,6 +47,8 @@ public class AssignmentListFragment extends Fragment {
         private Assignments mAssignments;
         private ImageView mSolvedImageView;
         private TextView mSubjectTextView;
+        private TextView mReminderTextView;
+        private TextView mTypeTextView;
 
 
         public AssignmentHolder(LayoutInflater inflater, ViewGroup parent) {
@@ -60,6 +59,8 @@ public class AssignmentListFragment extends Fragment {
             mDateTextView = (TextView) itemView.findViewById(R.id.assignment_date);
             mSolvedImageView = (ImageView) itemView.findViewById(R.id.assignment_solved);
             mSubjectTextView = (TextView) itemView.findViewById(R.id.assignment_subject);
+            mReminderTextView = (TextView) itemView.findViewById(R.id.assignment_reminder);
+            mTypeTextView = (TextView) itemView.findViewById(R.id.assignment_type);
 
 
         }
@@ -68,12 +69,16 @@ public class AssignmentListFragment extends Fragment {
             mAssignments = assignment;
             mTitleTextView.setText(mAssignments.getTitle());
             Date date = mAssignments.getDate();
-            String formattedDate = DateFormatter.formatDateAsString(DateFormat.LONG,date);
+            String formattedDate = DateFormatter.formatDateAsString(DateFormat.LONG, date);
             String formattedTime = DateFormatter.formatDateAsTimeString(DateFormat.SHORT, date);
             mDateTextView.setText(formattedDate + " @ " + formattedTime);
             mSolvedImageView.setVisibility(assignment.isSolved() ? View.VISIBLE : View.GONE);
             mSubjectTextView.setText(mAssignments.getSubject());
-
+            Date dates = mAssignments.getReminderDate();
+            String formattedDates = DateFormatter.formatDateAsString(DateFormat.LONG, dates);
+            String formattedTimes = DateFormatter.formatDateAsTimeString(DateFormat.SHORT, dates);
+            mReminderTextView.setText(formattedDates + " @ " + formattedTimes);
+            mTypeTextView.setText(mAssignments.getType());
 
 
         }
@@ -123,7 +128,6 @@ public class AssignmentListFragment extends Fragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -160,7 +164,6 @@ public class AssignmentListFragment extends Fragment {
         inflater.inflate(R.menu.fragment_assignment_list, menu);
 
 
-
     }
 
     @Override
@@ -172,6 +175,7 @@ public class AssignmentListFragment extends Fragment {
                 Intent intent = AssignmentPagerActivity
                         .newIntent(getActivity(), assignment.getId());
                 startActivity(intent);
+
                 return true;
 
             default:
@@ -179,7 +183,7 @@ public class AssignmentListFragment extends Fragment {
         }
     }
 
-   private void updateUI() {
+    private void updateUI() {
         AssignmentLab assignmentLab = AssignmentLab.get(getActivity());
         List<Assignments> assignments = assignmentLab.getAssignments();
 

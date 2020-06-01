@@ -6,6 +6,10 @@
         android:name="android.hardware.camera"
         android:required="false" />
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -25,7 +29,8 @@
         <activity
             android:name=".AssignmentListActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".MainMenuActivity"/>
         <activity
             android:name=".AssignmentPagerActivity"
             android:parentActivityName=".AssignmentListActivity"
@@ -39,15 +44,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AssignmentDetailActivity"></activity>
         <activity
             android:name=".SubActivity"
             android:parentActivityName=".AssignmentListActivity" />
         <activity
             android:name=".MainMenuActivity"
+            android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat"/>
 
         <provider
-            android:name="android.support.v4.content.FileProvider"
+            android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.assignmentapplication.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
@@ -55,6 +64,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/files" />
         </provider>
+        <receiver android:name=".AlarmReceiver"></receiver>
     </application>
 
 </manifest>

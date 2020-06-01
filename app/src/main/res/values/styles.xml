@@ -29,37 +29,35 @@
     </style>
 
     <style name="WindowAnimationTransition">
-    <item name="android:windowEnterAnimation" >@android:anim/fade_in</item>
-        <item name="android:windowExitAnimation" >@android:anim/fade_out</item>
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
 
 
     </style>
 
 
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
-<style name="AppTheme.NoActionBar">
-<item name="windowActionBar">false</item>
-<item name="windowNoTitle">true</item>
-</style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-<style name="AppTheme.AppBarOverlay"
-parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="AppTheme" />
 
-<style name="AppTheme.PopupOverlay" parent="AppTheme" />
-
-    <style name="DarkMode" parent ="android:Theme.Black"></style>
+    <style name="DarkMode" parent="android:Theme.Black"></style>
 
     <style name="Theme1">
-    <item name="android:textColor">@color/colorPrimary</item>
-    <item name="android:background">#645E1F</item>
-    <item name="android:textSize">15sp</item>
-</style>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:background">#645E1F</item>
+        <item name="android:textSize">15sp</item>
+    </style>
 
-<style name="Theme2">
-<item name="android:textColor">@color/colorPrimaryDark</item>
-<item name="android:background">#9E5454</item>
-<item name="android:textSize">35sp</item>
-</style>
+    <style name="Theme2">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:background">#9E5454</item>
+        <item name="android:textSize">35sp</item>
+    </style>
 
     <style name="AppTheme.Dark" parent="AppTheme">
         <!-- Dark theme base colours -->
@@ -74,12 +72,16 @@ parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     </style>
 
     <style name="AppTheme.Dark.AppBarOverlay" parent="AppTheme" />
+
     <style name="AppTheme.Dark.PopupOverlay" parent="AppTheme" />
 
     <string name="darktheme" />
 
+    <style name="customFab">
+        <item name="android:background"></item>
+    </style>
+
 
     <!-- Dark base activity theme -->
-    <style name="FeedActivityThemeDark" parent="AppTheme">
-    </style>
+    <style name="FeedActivityThemeDark" parent="AppTheme"></style>
 </resources>

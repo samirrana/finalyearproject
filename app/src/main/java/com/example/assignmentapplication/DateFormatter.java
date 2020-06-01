@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.Locale;
 
 
-
 public class DateFormatter {
 
     public static String formatDateAsString(int dateStyle, Date date) {

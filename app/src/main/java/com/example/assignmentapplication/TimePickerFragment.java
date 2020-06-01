@@ -6,7 +6,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TimePicker;
@@ -23,12 +23,13 @@ public class TimePickerFragment extends DialogFragment {
 
     public static final String ARG_DATE = "date";
 
+    private int notificationId = 9;
+
     public static final String EXTRA_TIME =
             "com.example.android.assignmentapplication.time";
 
     private TimePicker mTimePicker;
     private TimePicker mReminderPicker;
-
 
 
     // For attaching arguments to the dialog fragment
@@ -42,14 +43,12 @@ public class TimePickerFragment extends DialogFragment {
     }
 
 
-
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Date date = (Date) getArguments().getSerializable(ARG_DATE);
 
         final Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
-
 
 
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
@@ -97,6 +96,7 @@ public class TimePickerFragment extends DialogFragment {
             dismiss();
             return;
         }
+
 
         // Otherwise fragment was called from an activity
         Intent intent = new Intent();

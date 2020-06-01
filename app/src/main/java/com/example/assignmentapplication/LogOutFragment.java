@@ -3,7 +3,7 @@ package com.example.assignmentapplication;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
@@ -40,7 +40,6 @@ public class LogOutFragment extends Fragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -50,8 +49,8 @@ public class LogOutFragment extends Fragment {
         moButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-           /*     if (mEmail.getText().length()<1 || mPassword.getText().length()<1 ){
-                     Toast toast = Toast.makeText(getActivity(), "Please fill in all the details", Toast.LENGTH_LONG);
+                if (mEmail.getText().length() < 1 || mPassword.getText().length() < 1) {
+                    Toast toast = Toast.makeText(getActivity(), "Please fill in all the details", Toast.LENGTH_LONG);
 
                     TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
                     toastMessage.setTextColor(Color.RED);
@@ -59,17 +58,16 @@ public class LogOutFragment extends Fragment {
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
 
-                } else {*/
+                } else {
                     Intent intent = new Intent(getActivity(), MainMenuActivity.class);
                     startActivity(intent);
 
                     Toast.makeText(getActivity(), "Welcome", Toast.LENGTH_SHORT).show();
-                /*}*/
 
 
-
-
+                }
             }
+
         });
 
         mEmail = (EditText) v.findViewById(R.id.username);
@@ -87,7 +85,7 @@ public class LogOutFragment extends Fragment {
                     CharSequence s, int start, int before, int count) {
 
 
-                if (mEmail.getText().length()<1){
+                if (mEmail.getText().length() < 1) {
                     mEmail.setError("Please enter a valid student ID");
                 }
 
@@ -113,7 +111,7 @@ public class LogOutFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (mPassword.getText().length()<1){
+                if (mPassword.getText().length() < 1) {
                     mPassword.setError("Please enter a password");
                 }
 
@@ -126,10 +124,7 @@ public class LogOutFragment extends Fragment {
         });
 
 
-
-
-
-return v;
+        return v;
     }
 
 }

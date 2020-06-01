@@ -20,8 +20,9 @@ public class AssignmentCursorWrapper extends CursorWrapper {
         int isSolved = getInt(getColumnIndex(AssignmentDbSchema.AssignmentTable.Cols.SOLVED));
         String subject = getString(getColumnIndex(AssignmentDbSchema.AssignmentTable.Cols.SUBJECT));
         long reminder = getLong(getColumnIndex(AssignmentDbSchema.AssignmentTable.Cols.REMINDER));
-
-
+        String type = getString(getColumnIndex(AssignmentDbSchema.AssignmentTable.Cols.TYPE));
+        String subtask = getString(getColumnIndex(AssignmentDbSchema.AssignmentTable.Cols.SUBTASK));
+        String subdate = getString(getColumnIndex(AssignmentDbSchema.AssignmentTable.Cols.SUBDATE));
 
 
         Assignments assignment = new Assignments(UUID.fromString(uuidString));
@@ -30,12 +31,9 @@ public class AssignmentCursorWrapper extends CursorWrapper {
         assignment.setSolved(isSolved != 0);
         assignment.setSubject(subject);
         assignment.setReminderDate(new Date(reminder));
-
-
-
-
-
-
+        assignment.setType(type);
+        assignment.setSubTask(subtask);
+        assignment.setSubdate(subdate);
 
 
 

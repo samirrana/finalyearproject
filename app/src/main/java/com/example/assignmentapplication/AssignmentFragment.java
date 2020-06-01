@@ -3,7 +3,6 @@ package com.example.assignmentapplication;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -12,17 +11,17 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.content.FileProvider;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.core.content.FileProvider;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -35,14 +34,12 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.File;
-import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-public class AssignmentFragment extends Fragment  {
-
+public class AssignmentFragment extends Fragment {
 
 
     private static final String ARG_ASSIGNMENT_ID = "assignment_id";
@@ -51,9 +48,11 @@ public class AssignmentFragment extends Fragment  {
     private static final int DATE_FORMAT = DateFormat.FULL;
     private static final int TIME_FORMAT = DateFormat.SHORT;
 
+    private int notificationId = 9;
+
     private static final int REQUEST_DATE = 0;
     private static final int REQUEST_TIME = 1;
-    private static final int REQUEST_PHOTO= 2;
+    private static final int REQUEST_PHOTO = 2;
     private static final int REQUEST_DATES = 5;
     private static final int REQUEST_TIMES = 6;
 
@@ -101,17 +100,33 @@ public class AssignmentFragment extends Fragment  {
         mAssignments = AssignmentLab.get(getActivity()).getAssignment(assignmentID);
         mPhotoFile = AssignmentLab.get(getActivity()).getPhotoFile(mAssignments);
 
+
+
     }
+
+
+   /* @Override
+    public void onStop(){
+        super.onStop();
+        if(mTitleField == null){
+            AssignmentLab.get(getActivity())
+                    .deleteAssignment(mAssignments);
+        }
+    }*/
 
 
     @Override
     public void onPause() {
         super.onPause();
+        if(mTitleField.getText().length() < 1){
+            AssignmentLab.get(getActivity())
+                    .deleteAssignment(mAssignments);
+        } else {
+            AssignmentLab.get(getActivity())
+                    .updateAssignment(mAssignments);
+        }
 
-        AssignmentLab.get(getActivity())
-                .updateAssignment(mAssignments);
     }
-
 
 
     @Override
@@ -123,6 +138,8 @@ public class AssignmentFragment extends Fragment  {
         mTitleField = (EditText) v.findViewById(R.id.assignment_title);
 
         mTitleField.setText(mAssignments.getTitle());
+
+        mTitleField.requestFocus();
 
 
         mTitleField.addTextChangedListener(new TextWatcher() {
@@ -232,23 +249,25 @@ public class AssignmentFragment extends Fragment  {
 
         mReminderDate = (Button) v.findViewById(R.id.reminder_date);
         final Date currentDates = mAssignments.getReminderDate();
-        String formattedDates = DateFormatter.formatDateAsString(DATE_FORMAT,currentDates);
+        String formattedDates = DateFormatter.formatDateAsString(DATE_FORMAT, currentDates);
         mReminderDate.setText(formattedDates);
 
         mReminderDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager manager= getFragmentManager();
-                ReminderPickerFragment dialog =  ReminderPickerFragment.newInstance(mAssignments.getReminderDate());
+                FragmentManager manager = getFragmentManager();
+                ReminderPickerFragment dialog = ReminderPickerFragment.newInstance(mAssignments.getReminderDate());
                 dialog.setTargetFragment(AssignmentFragment.this, REQUEST_DATES);
                 dialog.show(manager, DIALOG_DATE);
+
+
             }
         });
 
 
         // Setup time button
         mReminderTime = (Button) v.findViewById(R.id.reminder_time);
-        String formattedTimes = DateFormatter.formatDateAsTimeString(TIME_FORMAT,currentDates);
+        final String formattedTimes = DateFormatter.formatDateAsTimeString(TIME_FORMAT, currentDates);
         mReminderTime.setText(formattedTimes);
 
         mReminderTime.setOnClickListener(new View.OnClickListener() {
@@ -256,13 +275,44 @@ public class AssignmentFragment extends Fragment  {
             public void onClick(View view) {
 
                 FragmentManager manager = getFragmentManager();
-                ReminderTimeFragment dialog = ReminderTimeFragment.newInstance(mAssignments.getReminderDate());
+                ReminderTimeFragment dialog = ReminderTimeFragment.newInstance(mAssignments.getReminderDate(), mAssignments.getId());
                 dialog.setTargetFragment(AssignmentFragment.this, REQUEST_TIMES);
                 dialog.show(manager, DIALOG_TIME);
+
+
+
 
             }
         });
 
+        mSpinner = (Spinner) v.findViewById(R.id.assignment_type);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
+                R.array.spinnerItems, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        mSpinner.setAdapter(adapter);
+
+
+
+
+        mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+              mAssignments.setType(parent.getItemAtPosition(position).toString());
+              mSpinner.setSelection(position);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+
+
+        });
 
         mAddassignment = (Button) v.findViewById(R.id.add_btn);
         updateDate();
@@ -275,7 +325,6 @@ public class AssignmentFragment extends Fragment  {
                 } else {
                     Intent intent = new Intent(getActivity(), AssignmentListActivity.class);
                     startActivity(intent);
-
 
                 }
             }
@@ -343,17 +392,18 @@ public class AssignmentFragment extends Fragment  {
             @Override
             public void onClick(View v) {
 
-                    Bitmap bitmap = PictureUtils.getScaledBitmap(mPhotoFile.getPath(),getActivity());
-                    displayPopUpImage(bitmap);
+                Bitmap bitmap = PictureUtils.getScaledBitmap(mPhotoFile.getPath(), getActivity());
+                displayPopUpImage(bitmap);
 
             }
         });
 
         return v;
+
     }
 
 
-    private void myCustomerAlertDialog(){
+    private void myCustomerAlertDialog() {
         final Dialog MyDialog = new Dialog(getActivity());
         MyDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         MyDialog.setContentView(R.layout.activity_full_screen_image);
@@ -363,7 +413,7 @@ public class AssignmentFragment extends Fragment  {
 
     }
 
-    private void displayPopUpImage(Bitmap imageBitmap){
+    private void displayPopUpImage(Bitmap imageBitmap) {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
         alertDialog.setNegativeButton("Close", new DialogInterface.OnClickListener() {
             @Override
@@ -372,7 +422,7 @@ public class AssignmentFragment extends Fragment  {
             }
         });
 
-        ImageView imageView = new ImageView (getActivity());
+        ImageView imageView = new ImageView(getActivity());
         imageView.setImageBitmap(imageBitmap);
 
         alertDialog.setView(imageView);
@@ -394,14 +444,12 @@ public class AssignmentFragment extends Fragment  {
             } else {
                 date = (Date) data.getSerializableExtra(TimePickerFragment.EXTRA_TIME);
             }
-
             mAssignments.setDate(date);
             mDateButton.setText(DateFormatter.formatDateAsString(DATE_FORMAT, date));
             mDateButton.setText(DateFormatter.formatDateAsTimeString(TIME_FORMAT, date));
             updateDate();
             updateTime();
-            }
-        else if (requestCode == REQUEST_PHOTO) {
+        } else if (requestCode == REQUEST_PHOTO) {
             Uri uri = FileProvider.getUriForFile(getActivity(),
                     "com.example.assignmentapplication.fileprovider",
                     mPhotoFile);
@@ -425,19 +473,20 @@ public class AssignmentFragment extends Fragment  {
             mReminderTime.setText(DateFormatter.formatDateAsTimeString(TIME_FORMAT, dates));
             updateDate();
             updateTime();
-        }
+
 
         }
+
+    }
 
     private void updateDate() {
         Date date = mAssignments.getDate();
-        String formattedDate = DateFormatter.formatDateAsString(DateFormat.LONG,date);
+        String formattedDate = DateFormatter.formatDateAsString(DateFormat.LONG, date);
         mDateButton.setText(formattedDate);
 
         Date dates = mAssignments.getReminderDate();
-        String formattedDates = DateFormatter.formatDateAsString(DateFormat.LONG,dates);
+        String formattedDates = DateFormatter.formatDateAsString(DateFormat.LONG, dates);
         mReminderDate.setText(formattedDates);
-
 
 
     }
@@ -454,18 +503,14 @@ public class AssignmentFragment extends Fragment  {
 
     private void updateTime() {
         Date date = mAssignments.getDate();
-        String formattedTime = DateFormatter.formatDateAsTimeString(DateFormat.SHORT,date);
+        String formattedTime = DateFormatter.formatDateAsTimeString(DateFormat.SHORT, date);
         mTimeButton.setText(formattedTime);
 
         Date dates = mAssignments.getReminderDate();
-        String formattedTimes = DateFormatter.formatDateAsTimeString(DateFormat.SHORT,dates);
+        String formattedTimes = DateFormatter.formatDateAsTimeString(DateFormat.SHORT, dates);
         mReminderTime.setText(formattedTimes);
 
     }
-
-
-
-
 
 
 }

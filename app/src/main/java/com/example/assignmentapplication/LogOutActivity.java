@@ -1,10 +1,10 @@
 package com.example.assignmentapplication;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 
-public class LogOutActivity extends AppCompatActivity  {
+public class LogOutActivity extends AppCompatActivity {
 
 
     @Override
@@ -14,7 +14,7 @@ public class LogOutActivity extends AppCompatActivity  {
         sharedPref = new SharedPref(this);
 
 
-        if(sharedPref.loadNightModeState()){
+        if (sharedPref.loadNightModeState()) {
             setTheme(R.style.darktheme);
 
         } else setTheme(R.style.AppTheme);
@@ -28,7 +28,7 @@ public class LogOutActivity extends AppCompatActivity  {
     }
 
 
-    }
+}
 
 
 

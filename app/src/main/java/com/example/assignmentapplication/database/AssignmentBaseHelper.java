@@ -22,11 +22,12 @@ public class AssignmentBaseHelper extends SQLiteOpenHelper {
                 AssignmentTable.Cols.UUID + ", " +
                 AssignmentTable.Cols.TITLE + ", " +
                 AssignmentTable.Cols.DATE + ", " +
-                AssignmentTable.Cols.SOLVED +", " +
+                AssignmentTable.Cols.SOLVED + ", " +
                 AssignmentTable.Cols.SUBJECT + ", " +
-                AssignmentTable.Cols.REMINDER +
-
-
+                AssignmentTable.Cols.REMINDER + ", " +
+                AssignmentTable.Cols.TYPE + ", " +
+                AssignmentTable.Cols.SUBTASK + ", " +
+                AssignmentTable.Cols.SUBDATE +
 
 
                 ")"

@@ -13,8 +13,9 @@ public class Assignments {
     private boolean mPriority;
     private String mPrior;
     private Date mReminderDate;
-
-
+    private String mType;
+    private String mSubTask;
+    private String mSubDate;
 
 
     public Assignments() {
@@ -83,13 +84,19 @@ public class Assignments {
     }
 
 
-    public String getPrior() { return mPrior; }
+    public String getPrior() {
+        return mPrior;
+    }
 
-    public void setPrior (String radio) {mPrior = radio;}
+    public void setPrior(String radio) {
+        mPrior = radio;
+    }
 
     public String getPhotoFilename() {
         return "IMG_" + getId().toString() + ".jpg";
     }
+
+    public String getPhotoFiled() { return "IMG" + getId().toString() + ".jpg"; }
 
     public Date getReminderDate() {
         return mReminderDate;
@@ -98,6 +105,27 @@ public class Assignments {
     public void setReminderDate(Date reminder) {
         mReminderDate = reminder;
     }
+
+    public String getType() { return mType;}
+
+    public void setType (String type) { mType = type;}
+
+    public String getSubTask() {
+        return mSubTask;
+    }
+
+    public void setSubTask(String subtask) {
+        mSubTask = subtask;
+    }
+
+    public String getSubDate() {
+        return mSubDate;
+    }
+
+    public void setSubdate(String subdate) {
+        mSubDate = subdate;
+    }
+
 
 
 }

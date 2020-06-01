@@ -2,7 +2,7 @@ package com.example.assignmentapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -36,7 +36,6 @@ public class SubjectListFragment extends Fragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,7 +45,7 @@ public class SubjectListFragment extends Fragment {
         moButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                if (mEmail.getText().length()<1 ){
+                if (mEmail.getText().length() < 1) {
                     mEmail.setError("error");
                 } else {
                     Intent intent = new Intent(getActivity(), AssignmentListActivity.class);
@@ -56,13 +55,10 @@ public class SubjectListFragment extends Fragment {
                 }
 
 
-
-
             }
         });
 
         mEmail = (EditText) v.findViewById(R.id.username);
-
 
 
         mEmail.addTextChangedListener(new TextWatcher() {
@@ -78,7 +74,7 @@ public class SubjectListFragment extends Fragment {
                     CharSequence s, int start, int before, int count) {
 
 
-                if (mEmail.getText().length()<1){
+                if (mEmail.getText().length() < 1) {
                     mEmail.setError("error");
                 }
 
@@ -94,10 +90,7 @@ public class SubjectListFragment extends Fragment {
         });
 
 
-
-
-
-return v;
+        return v;
     }
 
 }

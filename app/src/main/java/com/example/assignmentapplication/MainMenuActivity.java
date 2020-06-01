@@ -2,21 +2,20 @@ package com.example.assignmentapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.navigation.NavigationView;
+import androidx.fragment.app.Fragment;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 
-public class MainMenuActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
+public class MainMenuActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
 
 
         super.onCreate(savedInstanceState);
@@ -37,7 +36,6 @@ public class MainMenuActivity extends AppCompatActivity  implements NavigationVi
     }
 
 
-
     private boolean loadFragment(Fragment fragment) {
         //switching fragment
         if (fragment != null) {
@@ -45,7 +43,7 @@ public class MainMenuActivity extends AppCompatActivity  implements NavigationVi
             sharedPref = new SharedPref(this);
 
 
-            if(sharedPref.loadNightModeState()){
+            if (sharedPref.loadNightModeState()) {
                 setTheme(R.style.darktheme);
 
             } else setTheme(R.style.AppTheme);
@@ -67,7 +65,7 @@ public class MainMenuActivity extends AppCompatActivity  implements NavigationVi
         sharedPref = new SharedPref(this);
 
 
-        if(sharedPref.loadNightModeState()){
+        if (sharedPref.loadNightModeState()) {
             setTheme(R.style.darktheme);
 
         } else setTheme(R.style.AppTheme);
@@ -88,7 +86,7 @@ public class MainMenuActivity extends AppCompatActivity  implements NavigationVi
         sharedPref = new SharedPref(this);
 
 
-        if(sharedPref.loadNightModeState()){
+        if (sharedPref.loadNightModeState()) {
             setTheme(R.style.darktheme);
 
         } else setTheme(R.style.AppTheme);
@@ -97,19 +95,17 @@ public class MainMenuActivity extends AppCompatActivity  implements NavigationVi
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            Intent intent = new Intent(this, AssignmentListActivity.class);
+            Intent intent = new Intent(this, MainMenuActivity.class);
             startActivity(intent);
             return true;
         } else if (id == R.id.nav_assignments) {
-            Assignments assignment = new Assignments();
-            AssignmentLab.get(this).addAssignments(assignment);
-            Intent intent = AssignmentPagerActivity
-                    .newIntent(this, assignment.getId());
+            Intent intent = new Intent(this, AssignmentListActivity.class);
             startActivity(intent);
+            
 
         } else if (id == R.id.nav_notes) {
 
-            Intent intent = new Intent(this, SubActivity.class);
+            Intent intent = new Intent(this, AssignmentDetailActivity.class);
             startActivity(intent);
             return true;
 
@@ -127,7 +123,6 @@ public class MainMenuActivity extends AppCompatActivity  implements NavigationVi
             finish();
 
             return true;
-
 
 
         }

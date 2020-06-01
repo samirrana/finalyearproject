@@ -1,8 +1,7 @@
 package com.example.assignmentapplication;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.Spinner;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SubActivity extends AppCompatActivity {
 
@@ -14,7 +13,7 @@ public class SubActivity extends AppCompatActivity {
         sharedPref = new SharedPref(this);
 
 
-        if(sharedPref.loadNightModeState()){
+        if (sharedPref.loadNightModeState()) {
             setTheme(R.style.darktheme);
 
         } else setTheme(R.style.AppTheme);

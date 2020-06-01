@@ -1,6 +1,6 @@
 package com.example.assignmentapplication;
 
-import android.support.v4.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 
 
 import android.app.Activity;
@@ -18,8 +18,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class ReminderPickerFragment extends DialogFragment{
-
+public class ReminderPickerFragment extends DialogFragment {
 
 
     public static final String EXTRA_DATES =
@@ -87,7 +86,6 @@ public class ReminderPickerFragment extends DialogFragment{
         getTargetFragment()
                 .onActivityResult(getTargetRequestCode(), resultCode, intent);
     }
-
 
 
 }

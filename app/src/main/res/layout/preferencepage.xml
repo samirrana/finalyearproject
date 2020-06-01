@@ -7,47 +7,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-
-    android:padding="24dp"
-    android:orientation="vertical"
-    tools:context=".SettingsActivity"
-    android:background="?attr/backgroundcolor">
-
-
-
-
-    <android.support.v7.widget.CardView
-        android:layout_marginTop="8dp"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
 
-        <LinearLayout
+        android:padding="24dp"
+        android:orientation="vertical"
+        tools:context=".SettingsActivity"
+        android:background="?attr/backgroundcolor">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="match_parent"
-            android:padding="10dp"
-            android:background="?attr/backgroundcolor">
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="?attr/textcolor"
-            android:text="@string/dark_mode"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:background="?attr/backgroundcolor">
 
-            <Switch
-                android:id="@+id/myswitch"
-                android:layout_width="344dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/enable_mode"
-                android:textColor="?attr/textcolor" />
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="?attr/textcolor"
+                    android:text="@string/dark_mode" />
 
-    </android.support.v7.widget.CardView>
+                <Switch
+                    android:id="@+id/myswitch"
+                    android:layout_width="344dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/enable_mode"
+                    android:textColor="?attr/textcolor" />
+            </LinearLayout>
 
-</LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
 </ScrollView>

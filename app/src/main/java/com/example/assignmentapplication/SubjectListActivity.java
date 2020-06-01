@@ -1,10 +1,10 @@
 package com.example.assignmentapplication;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Spinner;
 
-public class SubjectListActivity extends AppCompatActivity  {
+public class SubjectListActivity extends AppCompatActivity {
 
 
     private Spinner spinner;
@@ -16,7 +16,7 @@ public class SubjectListActivity extends AppCompatActivity  {
         sharedPref = new SharedPref(this);
 
 
-        if(sharedPref.loadNightModeState()){
+        if (sharedPref.loadNightModeState()) {
             setTheme(R.style.darktheme);
 
         } else setTheme(R.style.AppTheme);
@@ -30,7 +30,7 @@ public class SubjectListActivity extends AppCompatActivity  {
     }
 
 
-    }
+}
 
 
 

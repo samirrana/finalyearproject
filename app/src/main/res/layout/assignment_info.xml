@@ -1,83 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <android.support.v7.widget.Toolbar
-        android:layout_alignParentTop="true"
-        app:titleTextColor="@android:color/white"
-        app:title="Assignment Details"
-
-        android:id="@+id/toolbar_add_schedule"
-        android:background="@color/colorPrimary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    android:layout_height="wrap_content">
 
 
     <TextView
-        android:layout_width="289dp"
-        android:layout_height="47dp"
-        android:paddingTop="20dp"
-        android:text="Final Year Project"
+        android:id="@+id/assignment_name"
+        android:layout_width="290dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+
+        android:paddingTop="0dp"
+        android:text="Name"
         android:textColor="?attr/textcolor"
         android:textSize="8pt"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="49dp" />
-
-
-    <TextView
-        android:id="@+id/assignment_title"
-        android:layout_width="253dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="108dp"
-        android:text="SEG3104"
-        android:textColor="?attr/tintcolor"
-        app:layout_constraintBottom_toTopOf="@+id/assignment_date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="@id/assignment_name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/assignment_name"
         android:layout_width="57dp"
         android:layout_height="25dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="64dp"
         android:text="Subject"
-        android:textColor="@color/colorPrimary"
-        app:layout_constraintBottom_toTopOf="@+id/assignment_date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
-        app:layout_constraintLeft_toRightOf="@id/assignment_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.897"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <TextView
-        android:id="@+id/assignment_title"
-        android:layout_width="253dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="144dp"
-        android:text="Project"
-        android:textColor="?attr/tintcolor"
-        app:layout_constraintBottom_toTopOf="@+id/assignment_date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="@id/assignment_name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <TextView
-        android:id="@+id/assignment_name"
-        android:layout_width="wrap_content"
-        android:layout_height="24dp"
-        android:layout_marginTop="144dp"
-        android:text="Type"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/assignment_date"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,170 +39,283 @@
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
-        android:id="@+id/assignment_title"
-        android:layout_width="253dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="180dp"
-        android:text="27/11/2019 @ 12:00 PM"
-        android:textColor="?attr/tintcolor"
-        app:layout_constraintBottom_toTopOf="@+id/assignment_date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="@id/assignment_name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <TextView
-        android:id="@+id/assignment_name"
         android:layout_width="wrap_content"
         android:layout_height="24dp"
-        android:layout_marginTop="180dp"
-        android:text="Due Date:"
+        android:layout_marginTop="104dp"
+        android:text="Type"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/assignment_date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.037"
+        app:layout_constraintHorizontal_bias="0.039"
         app:layout_constraintLeft_toRightOf="@id/assignment_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.897"
         app:layout_constraintVertical_chainStyle="packed" />
 
-
     <TextView
-        android:id="@+id/assignment_title"
+        android:id="@+id/assignment_reminder"
         android:layout_width="253dp"
         android:layout_height="27dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="180dp"
         android:text="25/11/2019 @ 5:00 PM"
         android:textColor="?attr/tintcolor"
         app:layout_constraintBottom_toTopOf="@+id/assignment_date"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintLeft_toLeftOf="@id/assignment_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
-        android:id="@+id/assignment_name"
+        android:id="@+id/assignment_subject"
+        android:layout_width="253dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="64dp"
+        android:text="SEG3104"
+        android:textColor="?attr/tintcolor"
+        app:layout_constraintBottom_toTopOf="@+id/assignment_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintLeft_toLeftOf="@id/assignment_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/assignment_due"
+        android:layout_width="253dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="140dp"
+        android:text="27/11/2019 @ 12:00 PM"
+        android:textColor="?attr/tintcolor"
+        app:layout_constraintBottom_toTopOf="@+id/assignment_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintLeft_toLeftOf="@id/assignment_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+
         android:layout_width="wrap_content"
         android:layout_height="24dp"
-        android:layout_marginTop="220dp"
-        android:text="Reminder:"
+        android:layout_marginTop="140dp"
+        android:text="Due Date:"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/assignment_date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintHorizontal_bias="0.031"
         app:layout_constraintLeft_toRightOf="@id/assignment_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.897"
         app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginTop="180dp"
+        android:text="Reminder:"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/assignment_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.031"
+        app:layout_constraintLeft_toRightOf="@id/assignment_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.897"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/assignment_type"
+        android:layout_width="253dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="104dp"
+        android:text="Project"
+        android:textColor="?attr/tintcolor"
+        app:layout_constraintBottom_toTopOf="@+id/assignment_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.462"
+        app:layout_constraintLeft_toLeftOf="@id/assignment_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
 
     <View
         android:id="@+id/divider2"
         android:layout_width="409dp"
         android:layout_height="1dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="236dp"
         android:background="?android:attr/listDivider"
         android:outlineAmbientShadowColor="@color/colorPrimary"
         android:outlineSpotShadowColor="@color/colorPrimary"
-        tools:layout_editor_absoluteX="-3dp"
-        tools:layout_editor_absoluteY="247dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="72dp"
         android:layout_height="31dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="256dp"
         android:text="Subtask"
-        android:textSize="8pt"
         android:textColor="@android:color/black"
-        tools:layout_editor_absoluteX="14dp"
-        tools:layout_editor_absoluteY="257dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </LinearLayout>
+        android:textSize="8pt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
+        android:id="@+id/dateView"
+        android:layout_width="106dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="288dp"
+        android:layout_marginLeft="288dp"
+        android:layout_marginTop="256dp"
+        android:text="Date Due"
+        android:textColor="@android:color/black"
+        android:textSize="8pt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/assignment_subtask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Conduct Literature Review"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="301dp"/>
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="296dp"
+        android:text="Add Subtask"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
+        android:id="@+id/subtask_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="05/09/2019"
-        tools:layout_editor_absoluteX="332dp"
-        tools:layout_editor_absoluteY="301dp"/>
+        android:layout_marginStart="304dp"
+        android:layout_marginLeft="304dp"
+        android:layout_marginTop="296dp"
+        android:text="Date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Gather Requirements"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="335dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="15/09/2019"
-        tools:layout_editor_absoluteX="335dp"
-        tools:layout_editor_absoluteY="335dp" />
-
-
-    <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewz"
         android:layout_width="72dp"
         android:layout_height="31dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="392dp"
         android:text="Media"
         android:textColor="@android:color/black"
         android:textSize="8pt"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="480dp" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/black"
-        android:outlineSpotShadowColor="@android:color/black"
-        android:src="@drawable/ic_addz"
-        tools:layout_editor_absoluteX="339dp"
-        tools:layout_editor_absoluteY="527dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-    </android.support.design.widget.FloatingActionButton>
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/fab_expand_menu_button"
+        android:layout_width="184dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="324dp"
+        android:layout_marginLeft="324dp"
+        android:layout_marginBottom="104dp"
+        app:fab_addButtonColorNormal="@color/colorPrimary"
+        app:fab_addButtonColorPressed="@color/darkColorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/action_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_icon="@drawable/ic_menu_camera"
+            app:fab_label="Take Picture"
+            app:fab_size="mini"
+            app:fab_title="Camera"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+
+            android:id="@+id/action_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_icon="@drawable/ic_edit"
+            app:fab_label="Edit"
+            app:fab_size="mini"
+            app:fab_title="Edit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/action_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_icon="@drawable/ic_subtitles"
+            app:fab_label="Add Subtask"
+            app:fab_size="mini"
+            app:fab_title="Add subtask"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
     <ImageView
         android:id="@+id/assignment_picture"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="432dp"
         android:background="@android:color/darker_gray"
         android:cropToPadding="true"
         android:scaleType="centerInside"
-        tools:layout_editor_absoluteX="14dp"
-        tools:layout_editor_absoluteY="523dp"></ImageView>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
 
-    <Button
-        android:id="@+id/add_btn"
-        android:layout_width="198dp"
-        android:layout_height="40dp"
-        android:layout_alignParentRight="true"
-        android:text="Mark as Complete"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="667dp" />
-
+    <ImageView
+        android:id="@+id/assignment_picturez"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginLeft="92dp"
+        android:layout_marginTop="432dp"
+        android:background="@android:color/darker_gray"
+        android:cropToPadding="true"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
 
     <Button
         android:id="@+id/add_btn"
         android:layout_width="207dp"
         android:layout_height="43dp"
-        android:text="Delete "
-        tools:layout_editor_absoluteX="204dp"
-        tools:layout_editor_absoluteY="667dp" />
+        android:layout_marginStart="212dp"
+        android:layout_marginLeft="212dp"
+        android:layout_marginTop="540dp"
+        android:text="Done"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/delete_btn"
+        android:layout_width="207dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="540dp"
+        android:text="Delete "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
