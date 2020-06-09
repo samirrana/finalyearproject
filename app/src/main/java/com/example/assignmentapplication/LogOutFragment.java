@@ -49,23 +49,23 @@ public class LogOutFragment extends Fragment {
         moButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                if (mEmail.getText().length() < 1 || mPassword.getText().length() < 1) {
-                    Toast toast = Toast.makeText(getActivity(), "Please fill in all the details", Toast.LENGTH_LONG);
-
-                    TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
-                    toastMessage.setTextColor(Color.RED);
-                    toastMessage.setTextSize(25);
-                    toast.setGravity(Gravity.CENTER, 0, 0);
-                    toast.show();
-
-                } else {
+//                if (mEmail.getText().length() < 1 || mPassword.getText().length() < 1) {
+//                    Toast toast = Toast.makeText(getActivity(), "Please fill in all the details", Toast.LENGTH_LONG);
+//
+//                    TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+//                    toastMessage.setTextColor(Color.RED);
+//                    toastMessage.setTextSize(25);
+//                    toast.setGravity(Gravity.CENTER, 0, 0);
+//                    toast.show();
+//
+//                } else {
                     Intent intent = new Intent(getActivity(), MainMenuActivity.class);
                     startActivity(intent);
 
                     Toast.makeText(getActivity(), "Welcome", Toast.LENGTH_SHORT).show();
 
 
-                }
+//                }
             }
 
         });

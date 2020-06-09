@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.assignmentapplication">
 
     <uses-feature
@@ -16,7 +17,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:largeHeap="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:allowBackup">
         <activity android:name=".FullScreenImageActivity"></activity>
         <activity
             android:name=".SettingsActivity"
@@ -31,9 +34,16 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".MainMenuActivity"/>
+        <activity android:name=".NotesActivity"
+            android:parentActivityName=".MainMenuActivity"
+            ></activity>
         <activity
             android:name=".AssignmentPagerActivity"
             android:parentActivityName=".AssignmentListActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NotesPagerActivity"
+            android:parentActivityName=".NotesActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".LogOutActivity"
@@ -65,6 +75,22 @@
                 android:resource="@xml/files" />
         </provider>
         <receiver android:name=".AlarmReceiver"></receiver>
+        <activity android:name=".add_schedule"
+        android:theme="@style/Theme.Design.Light.NoActionBar"></activity>
+        <activity android:name=".add_subject"
+            android:theme="@style/Theme.Design.Light.NoActionBar"></activity>
+
+        <activity android:name=".ScheduleActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".MainMenuActivity"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity android:name=".Home"></activity>
+
+        <activity android:name=".MainActivity"></activity>
+
+
+
+
     </application>
 
 </manifest>

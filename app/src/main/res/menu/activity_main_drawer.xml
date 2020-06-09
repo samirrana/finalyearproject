@@ -19,12 +19,12 @@
             android:title="Assignment" />
 
         <item
-            android:id="@+id/nav_schedule"
+            android:id="@+id/nav_notes"
             android:icon="@drawable/ic_note"
             android:title="Notes" />
 
         <item
-            android:id="@+id/nav_notes"
+            android:id="@+id/nav_schedule"
             android:icon="@drawable/ic_schedule"
             android:title="Timetable" />
 

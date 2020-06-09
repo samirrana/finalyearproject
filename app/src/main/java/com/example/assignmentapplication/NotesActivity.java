@@ -22,7 +22,7 @@ public class NotesActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         getSupportFragmentManager().beginTransaction()
-                .replace(android.R.id.content, new NotesFragment())
+                .replace(android.R.id.content, new NotesListFragment())
                 .commit();
 
 

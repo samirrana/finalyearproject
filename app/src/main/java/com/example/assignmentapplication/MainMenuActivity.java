@@ -14,11 +14,13 @@ import android.view.MenuItem;
 public class MainMenuActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
 
         super.onCreate(savedInstanceState);
+
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -78,6 +80,7 @@ public class MainMenuActivity extends AppCompatActivity implements NavigationVie
         }
     }
 
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -115,6 +118,13 @@ public class MainMenuActivity extends AppCompatActivity implements NavigationVie
             Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
             return true;
+
+        } else if (id == R.id.nav_schedule){
+            Intent intent = new Intent(this, ScheduleActivity.class);
+            startActivity(intent);
+            return true;
+
+
 
         } else if (id == R.id.nav_logout) {
 

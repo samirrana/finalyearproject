@@ -72,6 +72,8 @@
     <string name="toast_format">Format selected</string>
     <string name="assignment_action_label">Actions</string>
     <string name="assignment_subject_label">Subject</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
 
 
     <string name="crime_report">%1$s!

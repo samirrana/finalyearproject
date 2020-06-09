@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_add_subject"
+    android:background="#eeeeee"
+    android:focusable="true"
+    android:focusedByDefault="true"
+    android:focusableInTouchMode="true"
+    android:layout_margin="0dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="add_subject"
+    tools:ignore="UnusedAttribute">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.appcompat.widget.Toolbar
+            android:layout_alignParentTop="true"
+            app:titleTextColor="@android:color/white"
+            app:title="Add Subject"
+            android:id="@+id/toolbar_add_subject"
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+
+        <LinearLayout
+            android:elevation="0.5dp"
+            android:id="@+id/main_layout_add_subject"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:layout_below="@id/toolbar_add_subject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:targetApi="lollipop">
+
+            <EditText
+                android:id="@+id/input_subject_name"
+                android:background="@android:color/transparent"
+                android:padding="15dp"
+                android:hint="Add subject's name"
+                android:singleLine="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:importantForAutofill="no"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/input_semester"
+                android:background="@android:color/transparent"
+                android:padding="15dp"
+                android:hint="Enter semester"
+                android:singleLine="true"
+                android:inputType="textPersonName"
+                android:importantForAutofill="no"
+                tools:ignore="HardcodedText">
+
+            </EditText>
+
+            <View
+                android:background="#eeeeee"
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:elevation="0.5dp"
+            android:id="@+id/other_layout_add_subject"
+            android:layout_marginTop="25dp"
+            android:background="@android:color/white"
+            android:layout_below="@id/main_layout_add_subject"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:targetApi="lollipop">
+
+            <LinearLayout
+                android:padding="5dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:ignore="ContentDescription" />
+                <EditText
+                    android:id="@+id/input_subject_room"
+                    android:hint="Room"
+                    android:padding="10dp"
+                    android:background="@android:color/transparent"
+                    android:singleLine="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:importantForAutofill="no"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <View
+                android:background="#eeeeee"
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"/>
+
+            <LinearLayout
+                android:padding="5dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:ignore="ContentDescription" />
+
+                <EditText
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:onClick="open_dialog"
+                    android:editable="false"
+                    android:id="@+id/input_subject_teacher"
+                    android:hint="Teacher's name"
+                    android:padding="10dp"
+                    android:background="@android:color/transparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:importantForAutofill="no"
+                    tools:ignore="Deprecated,HardcodedText,KeyboardInaccessibleWidget" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="5dp"
+            android:elevation="0.5dp"
+            android:layout_marginTop="25dp"
+            android:background="@android:color/white"
+            android:layout_below="@id/other_layout_add_subject"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:targetApi="lollipop">
+
+            <EditText
+                android:inputType="text"
+                android:id="@+id/input_subject_note"
+                android:hint="Add a note"
+                android:padding="10dp"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="no"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/button_add_subject"
+            android:onClick="adding"
+            android:elevation="0.5dp"
+            android:text="add Subject"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:targetApi="lollipop"
+            tools:ignore="HardcodedText" />
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
