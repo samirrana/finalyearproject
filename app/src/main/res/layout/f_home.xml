@@ -22,7 +22,7 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:layout_gravity="center_horizontal"
-                android:text="Your class today"
+                android:text="Today's Schedule"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:ignore="HardcodedText" />
@@ -59,7 +59,7 @@
 
                 <TextView
                     android:textSize="19sp"
-                    android:text="There's no class today"
+                    android:text="You have nothing today"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:ignore="HardcodedText" />
@@ -71,6 +71,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/today_assignment"
+                android:visibility="gone"
+                >
+            </androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

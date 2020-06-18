@@ -21,6 +21,9 @@ android {
             debuggable true
         }
     }
+    lintOptions {
+        checkReleaseBuilds false
+    }
 }
 
 dependencies {
@@ -48,6 +51,8 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.github.Binary-Finery:Bungee:master-SNAPSHOT'
     implementation 'com.github.BoD:aLibGlitch:1.0.0'
+    implementation "android.arch.persistence.room:runtime:1.1.0"
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.0"
 
 
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.0'

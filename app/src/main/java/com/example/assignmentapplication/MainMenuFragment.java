@@ -31,6 +31,7 @@ public class MainMenuFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,15 +72,14 @@ public class MainMenuFragment extends Fragment {
         mCalendarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Fragment someFragment = new subjects();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container, someFragment ); // give your fragment container id in first parameter
-                transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
-                transaction.commit();
+                Intent intent = new Intent(getActivity(), Home.class);
+                startActivity(intent);
             }
         });
 
 
         return v;
     }
+
+
 }

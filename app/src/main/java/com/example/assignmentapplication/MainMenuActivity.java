@@ -10,10 +10,12 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainMenuActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
+    private AppDatabase appDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class MainMenuActivity extends AppCompatActivity implements NavigationVie
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         loadFragment(new MainMenuFragment());
+        appDatabase = AppDatabase.geAppdatabase(MainMenuActivity.this);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -104,11 +107,11 @@ public class MainMenuActivity extends AppCompatActivity implements NavigationVie
         } else if (id == R.id.nav_assignments) {
             Intent intent = new Intent(this, AssignmentListActivity.class);
             startActivity(intent);
-            
+
 
         } else if (id == R.id.nav_notes) {
 
-            Intent intent = new Intent(this, AssignmentDetailActivity.class);
+            Intent intent = new Intent(this, NotesActivity.class);
             startActivity(intent);
             return true;
 
@@ -119,16 +122,27 @@ public class MainMenuActivity extends AppCompatActivity implements NavigationVie
             startActivity(intent);
             return true;
 
-        } else if (id == R.id.nav_schedule){
+        } else if (id == R.id.nav_schedule) {
             Intent intent = new Intent(this, ScheduleActivity.class);
             startActivity(intent);
             return true;
 
 
-
         } else if (id == R.id.nav_logout) {
 
-            Intent intent = new Intent(this, LogOutActivity.class);
+            deleteUser();
+
+            return true;
+
+        } else if (id == R.id.nav_subject) {
+
+            Intent intent = new Intent(this, SubActivity.class);
+            startActivity(intent);
+            return true;
+
+        } else if (id == R.id.nav_teacher) {
+
+            Intent intent = new Intent(this, TeacherActivity.class);
             startActivity(intent);
             finish();
 
@@ -140,4 +154,19 @@ public class MainMenuActivity extends AppCompatActivity implements NavigationVie
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    public void deleteUser() {
+
+        RoomDAO roomDAO = appDatabase.getRoomDAO();
+        UsernamePassword temp = roomDAO.getLoggedInUser();
+        roomDAO.Delete(temp);
+        AppDatabase.destroyInstance();
+        Toast.makeText(MainMenuActivity.this, "Logged out successfully", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, LogOutActivity.class);
+        startActivity(intent);
+
+
+
+    }
+
 }

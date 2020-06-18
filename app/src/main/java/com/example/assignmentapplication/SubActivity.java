@@ -21,7 +21,7 @@ public class SubActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         getSupportFragmentManager().beginTransaction()
-                .replace(android.R.id.content, new SubFragment())
+                .replace(android.R.id.content, new subjects())
                 .commit();
 
 

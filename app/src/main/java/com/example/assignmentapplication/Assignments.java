@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.UUID;
 
 public class Assignments {
-    private UUID mId;
+     UUID mId;
     private String mTitle;
     private Date mDate;
     private boolean mSolved;

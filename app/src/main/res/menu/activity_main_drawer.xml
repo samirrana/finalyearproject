@@ -28,6 +28,16 @@
             android:icon="@drawable/ic_schedule"
             android:title="Timetable" />
 
+        <item
+        android:id="@+id/nav_subject"
+        android:icon="@drawable/ic_subject"
+        android:title="Subject" />
+
+        <item
+            android:id="@+id/nav_teacher"
+            android:icon="@drawable/ic_teacher"
+            android:title="Teacher" />
+
 
     </group>
 

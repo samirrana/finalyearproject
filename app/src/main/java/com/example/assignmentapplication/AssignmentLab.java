@@ -10,7 +10,10 @@ import com.example.assignmentapplication.database.AssignmentCursorWrapper;
 import com.example.assignmentapplication.database.AssignmentDbSchema;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,6 +23,12 @@ public class AssignmentLab {
 
     private Context mContext;
     private SQLiteDatabase mDatabase;
+
+    Date c = Calendar.getInstance().getTime();
+
+
+    SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+    String formattedDate = df.format(c);
 
     public static AssignmentLab get(Context context) {
         if (sAssignmentLab == null) {
@@ -70,6 +79,30 @@ public class AssignmentLab {
 
     }
 
+
+
+    public List<Assignments> getCurrentAssignments(Date date) {
+
+
+
+        List<Assignments> assignments = new ArrayList<>();
+
+        AssignmentCursorWrapper cursor = queryAssignments(AssignmentDbSchema.AssignmentTable.Cols.DATE + " = ?", new String[]{date.toString()});
+
+
+        try {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                assignments.add(cursor.getAssignment());
+                cursor.moveToNext();
+            }
+        } finally {
+            cursor.close();
+        }
+
+        return assignments;
+
+    }
     public Assignments getAssignment(UUID id) {
         AssignmentCursorWrapper cursor = queryAssignments(
                 AssignmentDbSchema.AssignmentTable.Cols.UUID + " = ?",

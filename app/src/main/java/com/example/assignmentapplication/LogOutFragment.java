@@ -21,6 +21,8 @@ public class LogOutFragment extends Fragment {
     private EditText mEmail;
     private Button moButton;
     private EditText mPassword;
+    private TextView register;
+    private AppDatabase appDatabase;
 
 
     public static LogOutFragment newInstance() {
@@ -37,6 +39,7 @@ public class LogOutFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
     }
 
 
@@ -44,6 +47,27 @@ public class LogOutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.loginpage, container, false);
+        appDatabase = AppDatabase.geAppdatabase(getActivity());
+
+        register = v.findViewById(R.id.register);
+
+
+        RoomDAO roomDAO = appDatabase.getRoomDAO();
+        UsernamePassword temp = roomDAO.getLoggedInUser();
+        if(temp!=null){
+            Intent intent = new Intent(getActivity(),MainMenuActivity.class);
+            startActivity(intent);
+
+        }
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity() , Register.class);
+                startActivity(intent);
+
+            }
+        });
 
         moButton = (Button) v.findViewById(R.id.login);
         moButton.setOnClickListener(new View.OnClickListener() {
@@ -59,10 +83,11 @@ public class LogOutFragment extends Fragment {
 //                    toast.show();
 //
 //                } else {
-                    Intent intent = new Intent(getActivity(), MainMenuActivity.class);
+            /*        Intent intent = new Intent(getActivity(), MainMenuActivity.class);
                     startActivity(intent);
 
-                    Toast.makeText(getActivity(), "Welcome", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Welcome", Toast.LENGTH_SHORT).show();*/
+                loginUser(mEmail.getText().toString().trim(),mPassword.getText().toString().trim());
 
 
 //                }
@@ -125,6 +150,30 @@ public class LogOutFragment extends Fragment {
 
 
         return v;
+    }
+
+    public void loginUser(String user,String pass){
+
+        RoomDAO roomDAO = appDatabase.getRoomDAO();
+        UsernamePassword temp = roomDAO.getUserwithUsername(user);
+        //Toast.makeText(this, temp.getPassword(), Toast.LENGTH_SHORT).show();
+        if(temp==null){
+            Toast.makeText(getActivity(),"Invalid username",Toast.LENGTH_SHORT).show();
+        }
+        else{
+            if(temp.getPassword().equals(pass)){
+                temp.setIsloggedIn(1);
+                roomDAO.Update(temp);
+                AppDatabase.destroyInstance();
+                Intent intent = new Intent(getActivity(),MainMenuActivity.class);
+                startActivity(intent);
+
+            }
+            else{
+                Toast.makeText(getActivity(),"Invalid Password",Toast.LENGTH_SHORT).show();
+            }
+        }
+
     }
 
 }
