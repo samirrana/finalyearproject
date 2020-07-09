@@ -16,10 +16,11 @@ public class MainMenuActivity extends AppCompatActivity implements NavigationVie
 
 
     private AppDatabase appDatabase;
+    private static MainMenuFragment menu = new MainMenuFragment();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
 
         super.onCreate(savedInstanceState);
 
@@ -37,6 +38,17 @@ public class MainMenuActivity extends AppCompatActivity implements NavigationVie
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+        final SharedPref sharedPref;
+        sharedPref = new SharedPref(this);
+
+
+        if (sharedPref.loadNightModeState()) {
+            setTheme(R.style.darktheme);
+
+        } else setTheme(R.style.AppTheme);
+
+
 
     }
 
@@ -144,12 +156,20 @@ public class MainMenuActivity extends AppCompatActivity implements NavigationVie
 
             Intent intent = new Intent(this, TeacherActivity.class);
             startActivity(intent);
-            finish();
+
 
             return true;
 
+        }else if (id == R.id.nav_calendar) {
+
+            Intent intent = new Intent(this, Home.class);
+            startActivity(intent);
+
+
+            return true;
 
         }
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

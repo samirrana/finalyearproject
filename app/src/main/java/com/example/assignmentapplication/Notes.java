@@ -39,6 +39,10 @@ public class Notes {
         mHeader = header;
     }
 
+    public String getPhotoFilename() {
+        return "IMG_" + getId().toString() + ".jpg";
+    }
+
 
 
 

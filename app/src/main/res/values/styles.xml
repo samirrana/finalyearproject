@@ -82,6 +82,8 @@
     </style>
 
 
+
+
     <!-- Dark base activity theme -->
     <style name="FeedActivityThemeDark" parent="AppTheme"></style>
 </resources>

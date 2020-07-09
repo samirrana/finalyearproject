@@ -39,7 +39,6 @@ public class add_schedule extends AppCompatActivity {
     TimePickerDialog StartDialog, EndDialog; Toolbar tb;
 
 
-
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +50,18 @@ public class add_schedule extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         Objects.requireNonNull(ab).setDisplayHomeAsUpEnabled(true); ab.setHomeAsUpIndicator(R.drawable.ic_back);
         initTimeDialog();
+
+
+        final SharedPref sharedPref;
+        sharedPref = new SharedPref(this);
+
+
+        if (sharedPref.loadNightModeState()) {
+            setTheme(R.style.darktheme);
+
+        } else setTheme(R.style.AppTheme);
+
+
 
         subject_name = new ArrayList<>();
         subject_type = new ArrayList<>();

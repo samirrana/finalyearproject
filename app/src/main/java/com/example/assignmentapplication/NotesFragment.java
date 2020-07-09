@@ -14,6 +14,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
 import android.provider.ContactsContract;
@@ -37,6 +38,7 @@ import com.google.android.gms.vision.text.TextRecognizer;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.io.File;
 import java.util.List;
 import java.util.UUID;
 
@@ -53,7 +55,10 @@ public class NotesFragment extends Fragment {
     private Button mDeleteNotes;
     private TextView mHeader;
     private List<Notes> mNotez;
+    private File mPhotoFile;
     private int index = 1;
+
+
 
 
     private static final String ARG_NOTES_ID = "notes_id";
@@ -66,7 +71,7 @@ public class NotesFragment extends Fragment {
     String cameraPermission[];
     String storagePermission[];
 
-    Uri image_uri;
+
 
     public static boolean isView;
 
@@ -109,7 +114,9 @@ public class NotesFragment extends Fragment {
 
         UUID notesId = (UUID) getArguments().getSerializable(ARG_NOTES_ID);
         mNotes = NotesLab.get(getActivity()).getNotes(notesId);
+        mPhotoFile = NotesLab.get(getActivity()).getPhotoFile(mNotes);
         super.onCreate(savedInstanceState);
+
 
 
     }
@@ -150,6 +157,7 @@ public class NotesFragment extends Fragment {
 
         mResultEt.setText(mNotes.getText());
 
+        updatePhotoView();
 
 
 
@@ -260,11 +268,15 @@ public class NotesFragment extends Fragment {
         ContentValues values = new ContentValues();
         values.put(MediaStore.Images.Media.TITLE, "NewPic");
         values.put(MediaStore.Images.Media.DESCRIPTION,"Image To Text");
-        image_uri = getActivity().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+        Uri uri = FileProvider.getUriForFile(getActivity(),
+                "com.example.assignmentapplication.fileprovider",
+                mPhotoFile);
+
 
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri);
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
         startActivityForResult(cameraIntent, IMAGE_PICK_CAMERA_CODE);
+
     }
 
     private void requestStoragePermission() {
@@ -328,6 +340,7 @@ public class NotesFragment extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Uri uri = Uri.fromFile(mPhotoFile);
         if(resultCode == RESULT_OK){
             if (requestCode == IMAGE_PICK_GALLERY_CODE){
                 CropImage.activity(data.getData())
@@ -337,7 +350,7 @@ public class NotesFragment extends Fragment {
 
             }
             if (requestCode == IMAGE_PICK_CAMERA_CODE){
-                CropImage.activity(image_uri)
+                CropImage.activity(uri)
                         .setGuidelines(CropImageView.Guidelines.ON)
                         .start(getContext(),this);
 
@@ -375,6 +388,16 @@ public class NotesFragment extends Fragment {
                 }
             }
 
+        }
+    }
+
+    private void updatePhotoView() {
+        if (mPhotoFile == null || !mPhotoFile.exists()) {
+            mPreviewIv.setImageDrawable(null);
+        } else {
+            Bitmap bitmap = PictureUtils.getScaledBitmap(
+                    mPhotoFile.getPath(), getActivity());
+            mPreviewIv.setImageBitmap(bitmap);
         }
     }
 }

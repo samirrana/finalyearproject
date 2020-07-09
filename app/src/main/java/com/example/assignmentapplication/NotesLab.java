@@ -93,16 +93,14 @@ public class NotesLab {
 
     }
 
-/*
-    public File getPhotoFile(Assignments assignment) {
+
+
+    public File getPhotoFile(Notes notes) {
         File filesDir = mContext.getFilesDir();
-        return new File(filesDir, assignment.getPhotoFilename());
+        return new File(filesDir, notes.getPhotoFilename());
     }
 
-    public File getPhotoFilez(Assignments assignment) {
-        File filesdx = mContext.getFilesDir();
-        return new File(filesdx, assignment.getPhotoFiled());
-    }*/
+
 
     public void updateNotes(Notes notes) {
         String uuidString = notes.getId().toString();

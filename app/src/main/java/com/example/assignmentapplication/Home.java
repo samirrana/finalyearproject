@@ -77,7 +77,22 @@ public class Home extends AppCompatActivity {
         nv = findViewById(R.id.nav_view);
         fm = getSupportFragmentManager();
 
-        fm.beginTransaction().replace(R.id.content_home, HomeFragment).commit();
+
+
+        final SharedPref sharedPref;
+        sharedPref = new SharedPref(this);
+
+
+        if (sharedPref.loadNightModeState()) {
+            setTheme(R.style.darktheme);
+
+        } else setTheme(R.style.AppTheme);
+
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content_home,  HomeFragment)
+                .commit();
+
 
 
 
